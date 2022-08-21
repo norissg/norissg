@@ -1,19 +1,15 @@
 <?php 
 session_start(); 
 include "db_conn.php";
-     //creating variables for username and data 
 if (isset($_POST['uname']) && isset($_POST['password'])) {
     function validate($data){
-        //code should not have special characters, username ans passwors is in the correct format 
-       $data = trim($data); 
+       $data = trim($data);
        $data = stripslashes($data);
        $data = htmlspecialchars($data);
        return $data;
     }
-        //check if the username and passwords are valid 
     $uname = validate($_POST['uname']);
     $pass = validate($_POST['password']);
-         //check if the username field is not empty 
     if (empty($uname)) {
         header("Location: index.php?error=User Name is required");
         exit();
